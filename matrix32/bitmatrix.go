@@ -1,7 +1,9 @@
 package matrix32
 
-import "fmt"
-import "bitmatrix"
+import (
+	"fmt"
+	"github.com/petervolvowinz/bitmatrix"
+)
 
 type BitMatrix struct {
 	Bits [][]uint32
@@ -15,7 +17,7 @@ func minInt(a, b int) int {
 	return b
 }
 
-func NewBitMatrix(size int) Matrix {
+func NewBitMatrix(size int) bitmatrix.Matrix {
 
 	bitsize := (size / 32) + minInt((size%32), 1)
 	matrix := &BitMatrix{Bits: make([][]uint32, size)}
@@ -28,7 +30,7 @@ func NewBitMatrix(size int) Matrix {
 	return matrix
 }
 
-func (b *BitMatrix) GetMatrix(size int) Matrix {
+func (b *BitMatrix) GetMatrix(size int) bitmatrix.Matrix {
 	return NewBitMatrix(size)
 }
 
@@ -58,7 +60,7 @@ func (b *BitMatrix) GetIndex(i, j int) bool {
 	j = j - 1
 
 	if i < 0 || j > b.size-1 {
-		panic("index out of range ")
+		panic("matrix index out of range ")
 	}
 
 	bitvector := b.Bits[i]
@@ -83,7 +85,7 @@ func (b *BitMatrix) PrintMatrix() {
 }
 
 // currently only support squared size
-func (A *BitMatrix) Multiply(B Matrix) Matrix {
+func (A *BitMatrix) Multiply(B bitmatrix.Matrix) bitmatrix.Matrix {
 	if A.size != B.GetDimensions() {
 		panic("A and B not the same size")
 	}
@@ -103,7 +105,7 @@ func (A *BitMatrix) Multiply(B Matrix) Matrix {
 	return C
 }
 
-func (A *BitMatrix) Add(B Matrix) Matrix {
+func (A *BitMatrix) Add(B bitmatrix.Matrix) bitmatrix.Matrix {
 	if A.size != B.GetDimensions() {
 		panic("A and B not the same size")
 	}
