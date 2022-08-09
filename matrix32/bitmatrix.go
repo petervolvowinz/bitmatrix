@@ -17,7 +17,7 @@ func minInt(a, b int) int {
 	return b
 }
 
-func NewBitMatrix(size int) bitmatrix.Matrix {
+func NewBitMatrix(size int) Matrix {
 
 	bitsize := (size / 32) + minInt((size%32), 1)
 	matrix := &BitMatrix{Bits: make([][]uint32, size)}
@@ -30,7 +30,7 @@ func NewBitMatrix(size int) bitmatrix.Matrix {
 	return matrix
 }
 
-func (b *BitMatrix) GetMatrix(size int) bitmatrix.Matrix {
+func (b *BitMatrix) GetMatrix(size int) Matrix {
 	return NewBitMatrix(size)
 }
 
@@ -85,7 +85,7 @@ func (b *BitMatrix) PrintMatrix() {
 }
 
 // currently only support squared size
-func (A *BitMatrix) Multiply(B bitmatrix.Matrix) bitmatrix.Matrix {
+func (A *BitMatrix) Multiply(B BitMatrix) Matrix {
 	if A.size != B.GetDimensions() {
 		panic("A and B not the same size")
 	}
@@ -105,7 +105,7 @@ func (A *BitMatrix) Multiply(B bitmatrix.Matrix) bitmatrix.Matrix {
 	return C
 }
 
-func (A *BitMatrix) Add(B bitmatrix.Matrix) bitmatrix.Matrix {
+func (A *BitMatrix) Add(B BitMatrix) BitMatrix {
 	if A.size != B.GetDimensions() {
 		panic("A and B not the same size")
 	}
