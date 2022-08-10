@@ -8,8 +8,7 @@ import (
 )
 
 func TestPrintMatrix(T *testing.T) {
-	A := NewBitMatrix(57)
-	// A.PrintMatrix()
+	A := NewBitMatrix(57,57)
 
 	for i := 1; i <= 57; i++ {
 		for j := 1; j <= 57; j++ {
@@ -50,9 +49,9 @@ func testMatrices(C, RES bitmatrix.Matrix) bool {
 
 func TestMultiplication(T *testing.T) {
 
-	FacitMatrix := NewBitMatrix(2)
-	A := NewBitMatrix(2)
-	B := NewBitMatrix(2)
+	FacitMatrix := NewBitMatrix(2,2)
+	A := NewBitMatrix(2,2)
+	B := NewBitMatrix(2,2)
 
 	FacitMatrix.SetIndex(1, 1, false)
 	FacitMatrix.SetIndex(1, 2, true)
@@ -120,7 +119,7 @@ func TestMultiplication(T *testing.T) {
 }
 
 func TestGetSize(T *testing.T) {
-	A := NewBitMatrix(64)
+	A := NewBitMatrix(64,64)
 	bytes := A.GetSizeInBytes()
 	T.Log("no of bytes used for 64x64 Matrix is: ", bytes)
 	if bytes > 8*64*64 {
