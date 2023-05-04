@@ -1,7 +1,8 @@
-package matrix32
+package matrix83264
 
 import (
 	"fmt"
+	"bitmatrix"
 )
 
 type BitMatrix struct {

@@ -1,9 +1,9 @@
 /******** Peter Winzell (c), 7/1/22 *********************************************/
 
-package matrix32
+package matrix83264
 
 import (
-	"github.com/petervolvowinz/bitmatrix"
+	"bitmatrix"
 	"testing"
 )
 
